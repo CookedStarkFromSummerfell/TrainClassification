@@ -3,8 +3,6 @@ package pl.kalishak.trainclassif;
 import pl.kalishak.trainclassif.station.Route;
 import pl.kalishak.trainclassif.util.Line;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -38,9 +36,9 @@ public class TrainInfo {
     /**
      * Train characteristics
      */
-    protected final TrainModelType[] traits;
+    protected final TrainTrait[] traits;
 
-    private TrainInfo(CarrierIdentifier carrierIdentifier, Optional<Line> line, Optional<String> name, long number, Route route, TrainModelType[] traits) {
+    private TrainInfo(CarrierIdentifier carrierIdentifier, Optional<Line> line, Optional<String> name, long number, Route route, TrainTrait[] traits) {
         this.carrierIdentifier = carrierIdentifier;
         this.symbol = carrierIdentifier.symbol();
         this.line = line;
@@ -76,7 +74,7 @@ public class TrainInfo {
         private Optional<Line> line = Optional.empty();
         private Optional<String> name = Optional.empty();
         private Route route = Route.EMPTY;
-        private TrainModelType[] traits = { CasingTraits.CLASSIC };
+        private TrainTrait[] traits = { CasingTraits.CLASSIC };
 
         public Builder(CarrierIdentifier identifier, long number) {
             this.identifier = identifier;
@@ -100,7 +98,7 @@ public class TrainInfo {
             return this;
         }
 
-        public Builder traits(TrainModelType... traits) {
+        public Builder traits(TrainTrait... traits) {
             this.traits = traits;
             return this;
         }

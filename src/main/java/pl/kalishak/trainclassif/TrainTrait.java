@@ -1,4 +1,4 @@
 package pl.kalishak.trainclassif;
 
-public interface TrainModelType {
+public interface TrainTrait {
 }
