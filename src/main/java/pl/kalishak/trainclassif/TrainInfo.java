@@ -1,9 +1,11 @@
 package pl.kalishak.trainclassif;
 
+import pl.kalishak.trainclassif.station.Route;
 import pl.kalishak.trainclassif.util.Line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class TrainInfo {
@@ -28,38 +30,44 @@ public class TrainInfo {
      * Train's identification number
      */
     protected final long number;
-    //TODO Special class to inform about different line or line changes
     /**
      * Station list, where the train stops
      */
-    protected List<String> stations;
+    protected Route route;
 
     /**
      * Train characteristics
      */
     protected final TrainModelType[] traits;
 
-    private TrainInfo(CarrierIdentifier carrierIdentifier, Optional<Line> line, Optional<String> name, long number, List<String> stations, TrainModelType[] traits) {
+    private TrainInfo(CarrierIdentifier carrierIdentifier, Optional<Line> line, Optional<String> name, long number, Route route, TrainModelType[] traits) {
         this.carrierIdentifier = carrierIdentifier;
         this.symbol = carrierIdentifier.symbol();
         this.line = line;
         this.name = name;
         this.number = number;
-        this.stations = stations;
+        this.route = route;
         this.traits = traits;
     }
 
-    public void setStationList(List<String> stations) {
-        this.stations = stations;
+    protected final CarrierIdentifier getCarrierIdentifier() {
+        return carrierIdentifier;
     }
 
-    public final String getEndStation(boolean reversible) {
-
-        return reversible ? getStartStation(!reversible) : this.stations.get(stations.size() -1);
+    public String getSimpleCarrierName() {
+        return getCarrierIdentifier().localizedName();
     }
 
-    public final String getStartStation(boolean reversible) {
-        return reversible ? getEndStation(!reversible) : this.stations.get(0);
+    public Line getLine() throws NoSuchElementException {
+        return line.orElseThrow();
+    }
+
+    public String getName() {
+        return name.orElse("");
+    }
+
+    public long getNumber() {
+        return this.number;
     }
 
     public static class Builder {
@@ -67,7 +75,7 @@ public class TrainInfo {
         private final long number;
         private Optional<Line> line = Optional.empty();
         private Optional<String> name = Optional.empty();
-        private List<String> stations = new ArrayList<>();
+        private Route route = Route.EMPTY;
         private TrainModelType[] traits = { CasingTraits.CLASSIC };
 
         public Builder(CarrierIdentifier identifier, long number) {
@@ -87,8 +95,8 @@ public class TrainInfo {
             return this;
         }
 
-        public Builder stations(List<String> stations) {
-            this.stations = stations;
+        public Builder stations(Route route) {
+            this.route = route;
             return this;
         }
 
@@ -98,7 +106,7 @@ public class TrainInfo {
         }
 
         public TrainInfo build() {
-            return new TrainInfo(identifier, line, name, number, stations, traits);
+            return new TrainInfo(identifier, line, name, number, route, traits);
         }
     }
 }
