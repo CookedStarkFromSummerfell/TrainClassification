@@ -1,0 +1,31 @@
+{
+  "carrier": "KM",
+  "number": 12102,
+  "name": "RADOMIAK",
+  "stations": [
+    "Warszawa Wschodnia",
+    "Warszawa Stadion",
+    "Warszawa Powiśle",
+    "Warszawa Śródmieście",
+    "Warszawa Ochota",
+    "Warszawa Zachodnia",
+    "Warszawa Służewiec",
+    "Piaseczno",
+    "Zalesie Górne",
+    "Czachówek Południowy",
+    "Chynów",
+    "Warka",
+    "Dobieszyn",
+    "Radom Gołębiów",
+    "Radom Główny",
+    "Radom Południowy",
+    "Rożki",
+    "Ruda Wielka",
+    "Wola Lipiniecka",
+    "Jastrząb",
+    "Gąsawy Plebańskie",
+    "Szydłowiec",
+    "Lipowe Pole",
+    "Skarżysko Kamienna"
+  ]
+}

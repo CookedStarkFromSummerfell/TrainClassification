@@ -1,0 +1,21 @@
+{
+  "carrier": "KM",
+  "trains": {
+    "number": 11774,
+    "stations": [
+      "Tłuszcz",
+      "Jasienica Mazowiecka",
+      "Klembów",
+      "Dobczyn",
+      "Zagościniec",
+      "Wołomin Słoneczna",
+      "Wołomin",
+      "Kobyłka",
+      "Kobyłka-Ossów",
+      "Zielonka",
+      "Ząbki",
+      "Warszawa Zacisze-Wilno",
+      "Warszawa Wileńska"
+    ]
+  }
+}

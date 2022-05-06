@@ -1,0 +1,31 @@
+{
+  "carrier": "IC",
+  "number": 5320,
+  "name": "Żeromski",
+  "stations": [
+    "Olsztyn Główny",
+    "Olsztyn Zachodni",
+    "Olsztynek",
+    "Nidzica",
+    "Działdowo",
+    "Mława",
+    "Ciechanów",
+    "Nasielsk",
+    "Nowy Dwór Mazowiecki",
+    "Legionowo",
+    "Warszawa Wschodnia",
+    "Warszawa Śródmieście",
+    "Warszawa Zachodnia",
+    "Warszawa Służewiec",
+    "Piaseczno",
+    "Warka",
+    "Radom Główny",
+    "Skarżysko-Kamienna",
+    "Suchedniów",
+    "Kielce",
+    "Jędrzejów",
+    "Sędziszów",
+    "Miechów",
+    "Kraków Główny"
+  ]
+}
