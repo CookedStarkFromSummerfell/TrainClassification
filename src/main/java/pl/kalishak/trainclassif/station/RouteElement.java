@@ -11,4 +11,6 @@ public interface RouteElement {
         final int rIds = route.stations.size();
         //TODO change id
     }
+
+    String toString();
 }

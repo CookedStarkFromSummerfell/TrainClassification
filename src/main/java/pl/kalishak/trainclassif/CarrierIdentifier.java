@@ -26,4 +26,9 @@ public record CarrierIdentifier(String localizedName, int internalId, Color colo
 
         return new String(symbol).trim();
     }
+
+    @Override
+    public String toString() {
+        return localizedName();
+    }
 }

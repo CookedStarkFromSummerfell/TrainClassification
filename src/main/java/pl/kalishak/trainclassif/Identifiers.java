@@ -31,4 +31,14 @@ public class Identifiers {
             }
         }
     }
+
+    public static CarrierIdentifier fromSymbol(String getter) {
+        for (CarrierIdentifier id : AVAILABLE) {
+            if (id.symbol().equals(getter)) {
+                return id;
+            }
+        }
+
+        throw new IllegalArgumentException("There is no " + getter + " carrier available!");
+    }
 }

@@ -2,6 +2,7 @@ package pl.kalishak.trainclassif.station;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Route {
 
@@ -27,10 +28,41 @@ public class Route {
     }
 
     public void add(RouteElement element) {
-        if (!stations.contains(element)) {
-            routes.add(lastUsedId, element);
+        try {
+            add(lastUsedId, element);
             ++lastUsedId;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    @SuppressWarnings({ "unused", "deprecated" })
+    public void add(Consumer<RouteElement> element) {
+        try {
+            add(element.andThen(e -> {
+                int pos = e.getPosition();
+
+            }));
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+    }
+
+    private void add(int id, RouteElement element) throws Exception {
+        if(stations.contains(element)) {
+            throw new Exception("Cannot add the same object!" + element.toString());
+        } else {
+            this.routes.add(id, element);
+        }
+    }
+
+    public static Route createFromLists(SubRoute subRoute, List<String> mainRoute) {
+        final Route route = new Route();
+
+        mainRoute.forEach(station -> route.add(new Station(station, route)));
+        route.add(subRoute);
+
+        return route;
     }
 
     @SuppressWarnings("unchecked")
@@ -119,10 +151,30 @@ public class Route {
         }
     }
 
+    public List<String> getStationRawList() {
+        final List<String> result = new ArrayList<>();
+        final String prefix = isMainRoute() ? "-" : "*";
+        this.routes.forEach(element -> {
+
+            if(element instanceof SubRoute) {
+                result.addAll(((SubRoute)element).getStationRawList());
+            } else {
+                result.add(prefix + element.toString());
+            }
+        });
+        return result;
+    }
+
     public static class SubRoute extends Route implements RouteElement {
 
         public SubRoute() {
             super(false, false);
+        }
+
+        public static SubRoute createFromList(List<String> stations) {
+            SubRoute subRoute = new SubRoute();
+            stations.forEach(station -> subRoute.add(new Station(station, subRoute)));
+            return subRoute;
         }
 
         @Override
@@ -147,6 +199,11 @@ public class Route {
         @Override
         public boolean optional() {
             return !isMainRoute();
+        }
+
+        @Override
+        public String toString() {
+            return "SubRoute[%s]".formatted(this.routes.size());
         }
     }
 }

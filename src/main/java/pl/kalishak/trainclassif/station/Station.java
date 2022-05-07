@@ -17,4 +17,9 @@ public record Station(String name, Route route) implements RouteElement {
     public boolean optional() {
         return route instanceof Route.SubRoute;
     }
+
+    @Override
+    public String toString() {
+        return name();
+    }
 }

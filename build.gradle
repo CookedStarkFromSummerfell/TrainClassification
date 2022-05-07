@@ -11,8 +11,21 @@ repositories {
 
 dependencies {
     implementation group: 'com.google.collections', name: 'google-collections', version: '1.0'
+    implementation 'com.moandjiezana.toml:toml4j:0.7.2'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
 }
 
 test {

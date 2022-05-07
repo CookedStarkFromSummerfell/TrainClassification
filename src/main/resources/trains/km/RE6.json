@@ -1,0 +1,31 @@
+{
+  "carrier": "KM",
+  "stations": {
+    "id": 1,
+    "mainroute": [
+      "Małkinia",
+      "Prostyń",
+      "Sadowne Węgrowskie",
+      "Topór",
+      "Ostrówek Węgrowski",
+      "Łochów",
+      "Barchów",
+      "Urle",
+      "Szewnica",
+      "Mokra Wieś",
+      "Chrzęsne",
+      "Tłuszcz",
+      "Wołomin",
+      "Zielonka"
+    ],
+    "subroute": [
+      "Zielonka Bankowa",
+      "Warszawa Mokry Ług",
+      "Warszawa Rembertów"
+    ],
+    "mainroute_1": [
+      "Warszawa Wschodnia",
+      "Warszawa Centralna"
+    ]
+  }
+}
